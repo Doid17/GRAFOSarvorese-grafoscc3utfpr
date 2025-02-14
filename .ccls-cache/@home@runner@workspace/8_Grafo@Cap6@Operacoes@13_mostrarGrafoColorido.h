@@ -1,5 +1,5 @@
-#ifndef MOSTRAR_GRAFO_COLORIDO_H
-#define MOSTRAR_GRAFO_COLORIDO_H
+#ifndef MOSTRAR_GRAFO_COLORIDO_B_MAIS_H
+#define MOSTRAR_GRAFO_COLORIDO_B_MAIS_H
 
 #include "../Grafo.h"
 
@@ -13,11 +13,12 @@ void mostrarGrafoColorido(pDGrafo grafo) {
 
     printf("\n=== Grafo Colorido ===\n");
 
-    pNoh atual = grafo->listaVertices->primeiro;
-    while (atual) {
-        pVertice v = (pVertice)atual->info;
-        printf("Vértice %d -> Cor: %s\n", *((int *)v->info), cores[v->cor % 6]);
-        atual = atual->prox;
+    pNoh noh = grafo->listaVertices->primeiro;
+    while (noh) {
+        pVertice v = (pVertice)noh->info;
+        int corIndex = *((int *)v->info) % 6;
+        printf("Vértice %d -> Cor: %s\n", *((int *)v->info), cores[corIndex]);
+        noh = noh->prox;
     }
 }
 
