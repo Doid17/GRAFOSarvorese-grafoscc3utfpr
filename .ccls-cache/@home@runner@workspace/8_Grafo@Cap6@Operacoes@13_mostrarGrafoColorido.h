@@ -7,6 +7,7 @@ const char *cores[] = {"Azul", "Verde", "Vermelho", "Amarelo", "Laranja", "Roxo"
 
 void mostrarGrafoColorido(pDGrafo grafo) {
     if (!grafo || !grafo->listaVertices) {
+        printf("Erro: Grafo não inicializado.\n");
         return;
     }
 

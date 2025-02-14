@@ -22,9 +22,12 @@
 #include "Operacoes/12_colorirGrafo.h"
 #include "Operacoes/13_mostrarGrafoColorido.h"
 #include "Operacoes/13_mostrarGrafoColorido.h"
-#include "Operacoes/15_numero_cromatico.h"
+//#include "Operacoes/15_numero_cromatico.h"
 
 #include "Operacoes/16_grafoConexo.h"
+#include "Operacoes/17_grafoBipartido.h"
+#include "Operacoes/18_EmparelhamentoGrafoBipartido.h"
+
 #include "Operacoes/20_Hamiltoniano.h"
 #include "Operacoes/21_Euleriano.h"
 

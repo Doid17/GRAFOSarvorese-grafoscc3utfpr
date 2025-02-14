@@ -3,56 +3,44 @@
 
 #include "../Grafo.h"
 
-void colorirGrafo(pDGrafo grafo, FuncaoComparacao fc) {
-    if (!grafo || !grafo->listaVertices || grafo->listaVertices->quantidade == 0) {
-        return;
-    }
+void colorirGrafo(pDGrafo grafo, FuncaoComparacao fc) { // Agora aceita os dois parâmetros
+    if (!grafo || !grafo->listaVertices || grafo->listaVertices->quantidade == 0) return;
 
-    int numVertices = grafo->listaVertices->quantidade;
-    int cores[numVertices];
-
-    for (int i = 0; i < numVertices; i++) {
-        cores[i] = -1;
-    }
+    printf("\n=== INICIANDO COLORAÇÃO ===\n");
 
     pNoh atual = grafo->listaVertices->primeiro;
-    int index = 0;
-
     while (atual) {
         pVertice v = (pVertice)atual->info;
-        int corUsada[numVertices];
+        printf("\nProcessando Vértice %d...\n", *((int *)v->info));
 
-        for (int i = 0; i < numVertices; i++) {
-            corUsada[i] = 0;
+        int coresUsadas[grafo->listaVertices->quantidade];
+        for (int i = 0; i < grafo->listaVertices->quantidade; i++) coresUsadas[i] = 0;
+
+        pNoh adj = v->listaAdjacencias->primeiro;
+        while (adj) {
+            pVertice vAdj = (pVertice)adj->info;
+            if (vAdj->cor != -1) {
+                printf("    - Vértice %d é vizinho e tem cor %d\n", *((int *)vAdj->info), vAdj->cor);
+                coresUsadas[vAdj->cor] = 1;
+            }
+            adj = adj->prox;
         }
 
-        pNoh adjacente = v->listaAdjacencias->primeiro;
-        while (adjacente) {
-            pVertice vAdj = (pVertice)adjacente->info;
-            pNoh temp = grafo->listaVertices->primeiro;
-            int adjIndex = 0;
-            while (temp && fc(temp->info, vAdj) != 0) {
-                adjIndex++;
-                temp = temp->prox;
-            }
+        int cor = 0;
+        while (coresUsadas[cor]) cor++;
 
-            if (adjIndex < numVertices && cores[adjIndex] != -1) {
-                corUsada[cores[adjIndex]] = 1;
-            
-            }
-            adjacente = adjacente->prox;
-        }
-
-        for (int i = 0; i < numVertices; i++) {
-            if (corUsada[i] == 0) {
-                cores[index] = i;
-                v->cor = i;
-                break;
-            }
-        }
+        v->cor = cor;
+        printf("  -> Cor escolhida para Vértice %d: %d\n", *((int *)v->info), v->cor);
 
         atual = atual->prox;
-        index++;
+    }
+
+    printf("\n=== RESULTADO FINAL DA COLORAÇÃO ===\n");
+    atual = grafo->listaVertices->primeiro;
+    while (atual) {
+        pVertice v = (pVertice)atual->info;
+        printf("Vértice %d -> Cor %d\n", *((int *)v->info), v->cor);
+        atual = atual->prox;
     }
 }
 

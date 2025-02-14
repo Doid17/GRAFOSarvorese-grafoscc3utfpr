@@ -61,6 +61,8 @@ int main() {
     printf("|  9  - Encontra caminho entre dois vértices|\n");
     printf("| 11  - Criação de exemplo para coloração   |\n");
     printf("| 12  - Coloração do grafo                  |\n");
+    printf("| 13  - grafo bipartido                     |\n");
+    printf("| 14  - grafo bipartido para emparelhamento |\n");
     printf("| 16  - Criar Grafo conexo                  |\n");
     printf("| 17  - Verifica se o grafo e conexo        |\n");
     printf("| 18  - Excluir grafo atual                 |\n");
@@ -142,38 +144,35 @@ int main() {
       }
       getchar();
       break;
-        case 11:
-            printf("\nCriando um grafo perfeito para coloração...\n");
+ case 11:
+    printf("\nCriando um grafo perfeito para coloração...\n");
 
-            destruirListaInfo(grafo->listaVertices, free);
-            grafo->listaVertices = criarLista();
+    destruirListaInfo(grafo->listaVertices, free);
+    grafo->listaVertices = criarLista();
 
-            int vertices_perfeitos[] = {1, 2, 3, 4, 5, 6};
-            for (int i = 0; i < 6; i++) {
-                incluirVertice(grafo, &vertices_perfeitos[i], comparaVertice);
-            }
+    int vertices_perfeitos[] = {1, 2, 3, 4, 5, 6};
+    for (int i = 0; i < 6; i++) {
+        incluirVertice(grafo, &vertices_perfeitos[i], comparaVertice);
+    }
 
-            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[3], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[4], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[5], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[3], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[4], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[5], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[3], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[4], comparaVertice);
-            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[5], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[1], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[2], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[3], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[3], &vertices_perfeitos[4], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[4], &vertices_perfeitos[5], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[5], &vertices_perfeitos[0], comparaVertice);
 
-            printf("Grafo criado com sucesso! Estrutura:\n");
-            mostrarGrafo(grafo, imprimeVertice);
+    printf("Grafo criado com sucesso! Estrutura:\n");
+    mostrarGrafo(grafo, imprimeVertice);
 
-            // Chamando a coloração do grafo
-            colorirGrafo(grafo, comparaVertice);
+    // Chamando a coloração do grafo
+    colorirGrafo(grafo, comparaVertice);
 
-            // Chamando a nova representação gráfica colorida
-           mostrarGrafoColorido(grafo);
+    // Chamando a nova representação gráfica colorida
+    mostrarGrafoColorido(grafo);
 
-            getchar();
-            break;
+    getchar();
+    break;
 
 
 
@@ -184,6 +183,75 @@ int main() {
 
 
 
+      case 13:
+      printf("\nCriando um grafo bipartido...\n");
+
+      destruirListaInfo(grafo->listaVertices, free);
+      grafo->listaVertices = criarLista();
+
+      int vertices_nao_bipartidos[] = {1, 2, 3, 4, 5, 6};
+      for (int i = 0; i < 6; i++) {
+          incluirVertice(grafo, &vertices_nao_bipartidos[i], comparaVertice);
+      }
+
+      incluirAresta(grafo, &vertices_nao_bipartidos[0], &vertices_nao_bipartidos[3], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[0], &vertices_nao_bipartidos[4], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[0], &vertices_nao_bipartidos[5], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[1], &vertices_nao_bipartidos[3], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[1], &vertices_nao_bipartidos[4], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[1], &vertices_nao_bipartidos[5], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[2], &vertices_nao_bipartidos[3], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[2], &vertices_nao_bipartidos[4], comparaVertice);
+      incluirAresta(grafo, &vertices_nao_bipartidos[2], &vertices_nao_bipartidos[5], comparaVertice);
+
+  
+      printf("Grafo criado com sucesso! Estrutura:\n");
+      mostrarGrafo(grafo, imprimeVertice);
+
+      if (grafoBipartido(grafo, comparaVertice)) {
+          printf("O grafo é bipartido!\n");
+      } else {
+          printf("O grafo NÃO é bipartido.\n");
+      }
+        incluirAresta(grafo, &vertices_nao_bipartidos[3], &vertices_nao_bipartidos[4], comparaVertice);
+
+        printf("criado aresta extra entre vértices do mesmo conjunto\n");
+        //mostrarGrafo(grafo, imprimeVertice);
+
+        if (grafoBipartido(grafo, comparaVertice)) {
+            printf("O grafo é bipartido!\n");
+        } else {
+            printf("O grafo NÃO é bipartido.\n");
+        }
+
+      getchar();
+      break;
+
+      case 14:
+      printf("\nCriando um grafo bipartido para emparelhamento...\n");
+
+      destruirListaInfo(grafo->listaVertices, free);
+      grafo->listaVertices = criarLista();
+
+      int vertices_emparelhamento[] = {1, 2, 3, 4, 5, 6};
+      for (int i = 0; i < 6; i++) {
+          incluirVertice(grafo, &vertices_emparelhamento[i], comparaVertice);
+      }
+
+      incluirAresta(grafo, &vertices_emparelhamento[0], &vertices_emparelhamento[3], comparaVertice);
+      incluirAresta(grafo, &vertices_emparelhamento[0], &vertices_emparelhamento[4], comparaVertice);
+      incluirAresta(grafo, &vertices_emparelhamento[1], &vertices_emparelhamento[4], comparaVertice);
+      incluirAresta(grafo, &vertices_emparelhamento[1], &vertices_emparelhamento[5], comparaVertice);
+      incluirAresta(grafo, &vertices_emparelhamento[2], &vertices_emparelhamento[5], comparaVertice);
+
+      printf("Grafo criado com sucesso! Estrutura:\n");
+      mostrarGrafo(grafo, imprimeVertice);
+
+      int numEmparelhamentos = emparelhamentoGrafoBipartido(grafo, comparaVertice);
+      printf("Número máximo de emparelhamentos: %d\n", numEmparelhamentos);
+
+      getchar();
+      break;
 
 
 
