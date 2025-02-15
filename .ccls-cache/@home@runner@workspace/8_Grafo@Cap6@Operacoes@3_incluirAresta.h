@@ -11,7 +11,15 @@ void incluirAresta (pDGrafo grafo, void *vOrig, void *vDest, FuncaoComparacao fc
         printf("Um dos vertices nao existe! \n");
         return;
      }
-     incluirInfo(vOrigem->listaAdjacencias, vDestino);
+
+     if (!contemInfo(vOrigem->listaAdjacencias, vDestino, fc)) {
+         incluirInfo(vOrigem->listaAdjacencias, vDestino);
+     }
+     if (!contemInfo(vDestino->listaAdjacencias, vOrigem, fc)) {
+         incluirInfo(vDestino->listaAdjacencias, vOrigem);
+     }
+
+     printf("Aresta adicionada entre %d e %d\n", *((int*)vOrig), *((int*)vDest));
 }
 
 #endif

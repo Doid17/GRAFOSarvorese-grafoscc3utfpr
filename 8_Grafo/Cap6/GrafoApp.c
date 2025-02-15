@@ -247,6 +247,14 @@ int main() {
           emparelhamentoGrafoBipartido(grafo, comparaVertice);
       printf("Numero maximo de emparelhamentos: %d\n", numEmparelhamentos);
 
+      // **Teste 2**: Remover uma aresta e verificar se o emparelhamento diminui
+      excluirAresta(grafo, &vertices_emparelhamento[0], &vertices_emparelhamento[3], comparaVertice);
+      printf("\nApós remover a aresta 1 ↔ 4:\n");
+      mostrarGrafo(grafo, imprimeVertice);
+      int emparelhamentoReduzido = emparelhamentoGrafoBipartido(grafo, comparaVertice);
+      printf("Número máximo de emparelhamentos (reduzido): %d\n", emparelhamentoReduzido);
+
+
       getchar();
       break;
 
@@ -295,18 +303,17 @@ int main() {
       getchar();
       break;
 
-        case 11:
-            printf("\nCriando grafo Hamiltoniano e Euleriano...\n");
+          case 11:
+          printf("\nCriando grafo Hamiltoniano e Euleriano...\n");
 
-            destruirGrafo(grafo);
-            grafo = criarGrafo();
+          destruirGrafo(grafo);
+          grafo = criarGrafo();
 
-            int vertices_ham_eul[] = {1, 2, 3, 4, 5, 6};
-            for (int i = 0; i < 6; i++) {
-                incluirVertice(grafo, &vertices_ham_eul[i], comparaVertice);
-            }
+          int vertices_ham_eul[] = {1, 2, 3, 4, 5, 6};
+          for (int i = 0; i < 6; i++) {
+              incluirVertice(grafo, &vertices_ham_eul[i], comparaVertice);
+          }
 
-            // Criando um ciclo Hamiltoniano
             incluirAresta(grafo, &vertices_ham_eul[0], &vertices_ham_eul[1], comparaVertice);
             incluirAresta(grafo, &vertices_ham_eul[1], &vertices_ham_eul[2], comparaVertice);
             incluirAresta(grafo, &vertices_ham_eul[2], &vertices_ham_eul[3], comparaVertice);
@@ -314,11 +321,7 @@ int main() {
             incluirAresta(grafo, &vertices_ham_eul[4], &vertices_ham_eul[5], comparaVertice);
             incluirAresta(grafo, &vertices_ham_eul[5], &vertices_ham_eul[0], comparaVertice);
 
-            // Adicionando arestas extras para garantir grau par em todos os vértices
-            incluirAresta(grafo, &vertices_ham_eul[0], &vertices_ham_eul[3], comparaVertice);
-            incluirAresta(grafo, &vertices_ham_eul[1], &vertices_ham_eul[4], comparaVertice);
-            incluirAresta(grafo, &vertices_ham_eul[2], &vertices_ham_eul[5], comparaVertice);
-            incluirAresta(grafo, &vertices_ham_eul[4], &vertices_ham_eul[6], comparaVertice);  // Aresta corrigida!
+
 
             printf("Grafo Hamiltoniano e Euleriano criado com sucesso! Estrutura:\n");
             mostrarGrafo(grafo, imprimeVertice);
@@ -336,7 +339,6 @@ int main() {
         printf("NÃO é um Hamiltoniano.\n");
       }
       getchar();
-    //  mostrarGrafo(grafo, imprimeVertice);
       break;
 
         case 13:
