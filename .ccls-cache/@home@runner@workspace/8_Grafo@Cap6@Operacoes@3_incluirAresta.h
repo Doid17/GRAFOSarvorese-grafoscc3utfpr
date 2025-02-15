@@ -8,7 +8,7 @@ void incluirAresta (pDGrafo grafo, void *vOrig, void *vDest, FuncaoComparacao fc
      pVertice vDestino = buscarVertice(grafo, vDest, fc);
 
      if (vOrigem == NULL || vDestino == NULL){
-        printf("Um dos v�rtices n�o existe! \n");
+        printf("Um dos vertices nao existe! \n");
         return;
      }
      incluirInfo(vOrigem->listaAdjacencias, vDestino);

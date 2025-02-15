@@ -1,6 +1,6 @@
 #ifndef DUPLICAR_LISTA_H
 #define DUPLICAR_LISTA_H
-
+#include "../Lista.h"
 pDLista duplicarLista(pDLista pd, FuncaoAlocacao fa)
 {
     pDLista pNovaLista = criarLista();

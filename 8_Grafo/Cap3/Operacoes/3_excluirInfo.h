@@ -1,6 +1,6 @@
 #ifndef EXCLUIR_INFO_H
 #define EXCLUIR_INFO_H
-
+#include "../Lista.h"
 int excluirInfo(pDLista pd, void *info, FuncaoComparacao pfc){
 
     pNoh atual, ant;

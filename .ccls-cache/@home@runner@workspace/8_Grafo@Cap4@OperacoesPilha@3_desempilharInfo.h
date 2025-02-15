@@ -1,6 +1,6 @@
 #ifndef DESEMPILHAR_INFO_PILHA_H
 #define DESEMPILHAR_INFO_PILHA_H
-
+#include "../Pilha.h"
 void* desempilharInfo(pDPilha pdPilha){
 
    if (pdPilha != NULL && pilhaVazia(pdPilha)!=0)

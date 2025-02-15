@@ -1,6 +1,6 @@
 #ifndef INCLUIR_INFO_ORDENADA_H
 #define INCLUIR_INFO_ORDENADA_H
-
+#include "../Lista.h"
 void incluirInfoOrdenada(pDLista pd, void *info, FuncaoComparacao pfc){
 
     if (pd == NULL){
@@ -10,11 +10,11 @@ void incluirInfoOrdenada(pDLista pd, void *info, FuncaoComparacao pfc){
 
     pNoh atual = pd->primeiro;
     pNoh ant   = NULL;
-    // encontra a posição na lista onde colocar a nova info
+    // encontra a posiï¿½o na lista onde colocar a nova info
     while(atual != NULL){
 
        if (pfc(info, atual->info) > 0){
-          // achou a posição onde colocar a nova info
+          // achou a posiï¿½o onde colocar a nova info
           break;
        }
 
@@ -33,7 +33,7 @@ void incluirInfoOrdenada(pDLista pd, void *info, FuncaoComparacao pfc){
        precisa atualizar tambem o ponteiro para o primeiro noh da lista */
 
     if(ant == NULL && atual == NULL){
-        // a lista está vazia
+        // a lista estï¿½ vazia
         //printf("Lista vaziaaa!");
         pd->primeiro = pNovo;
         pd->ultimo   = pNovo;

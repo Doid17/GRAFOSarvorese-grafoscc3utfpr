@@ -1,6 +1,6 @@
 #ifndef INCLUIR_INFO_MEIO_H
 #define INCLUIR_INFO_MEIO_H
-
+#include "../Lista.h"
 void incluirInfoMeio(pDLista pd, void *info, int pos){
 
     if (pd == NULL){

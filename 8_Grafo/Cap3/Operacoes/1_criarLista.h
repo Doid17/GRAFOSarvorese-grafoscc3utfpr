@@ -1,6 +1,6 @@
 #ifndef CRIAR_LISTA_H
 #define CRIAR_LISTA_H
-
+#include "../Lista.h"
 
 pDLista criarLista(){
     /* aloca memoria para o descritor */

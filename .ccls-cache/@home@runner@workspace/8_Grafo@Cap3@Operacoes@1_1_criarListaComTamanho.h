@@ -1,5 +1,6 @@
 #ifndef CRIAR_LISTA_COM_TAMANHO_H
 #define CRIAR_LISTA_COM_TAMANHO_H
+#include "../Lista.h"
 void incluirInfoMeio(pDLista pd, void *info, int pos);
 
 pDLista criarListaComTamanho(int tam){

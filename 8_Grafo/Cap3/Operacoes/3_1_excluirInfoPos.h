@@ -1,6 +1,6 @@
 #ifndef EXCLUIR_INFO_POS_H
 #define EXCLUIR_INFO_POS_H
-
+#include "../Lista.h"
 void* excluirInfoPos(pDLista pd, int pos){
 
     int cont=1;

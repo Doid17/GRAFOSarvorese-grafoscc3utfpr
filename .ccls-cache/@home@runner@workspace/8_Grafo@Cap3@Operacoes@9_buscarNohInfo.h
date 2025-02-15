@@ -1,6 +1,6 @@
 #ifndef BUSCAR_NOH_INFO_H
 #define BUSCAR_NOH_INFO_H
-
+#include "../Lista.h"
 /* --------------------------------- */
 void* buscarNohInfo(pDLista lista, void *info, FuncaoComparacao fc){
 

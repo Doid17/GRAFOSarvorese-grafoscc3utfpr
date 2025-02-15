@@ -1,6 +1,6 @@
 #ifndef CRIAR_PILHA_H
 #define CRIAR_PILHA_H
-
+#include "../Pilha.h"
 pDPilha criarPilha(){
     /* aloca memoria para o descritor */
     pDPilha pd = (pDPilha) malloc(sizeof(DPilha));

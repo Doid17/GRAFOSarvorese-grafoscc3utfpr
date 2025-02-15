@@ -1,6 +1,6 @@
 #ifndef BUSCAR_INFO_POS_H
 #define BUSCAR_INFO_POS_H
-
+#include "../Lista.h"
 /* --------------------------------- */
 void* buscarInfoPos(pDLista lista, int pos){
 

@@ -4,22 +4,29 @@
 #include "0_structs.h"
 #include "../Grafo.h"
 
-/* Verifica se um grafo é Euleriano */
 int ehEuleriano(pDGrafo grafo) {
     if (grafo == NULL || grafo->listaVertices == NULL || grafo->listaVertices->quantidade == 0) {
+        printf("[DEBUG] Grafo inválido ou vazio.\n");
         return 0;
     }
+
+    printf("[DEBUG] Verificando graus dos vértices...\n");
 
     pNoh atual = grafo->listaVertices->primeiro;
     while (atual != NULL) {
         pVertice v = (pVertice) atual->info;
+        printf("[DEBUG] Vértice %d - Grau: %d\n", *((int *)v->info), v->listaAdjacencias->quantidade);
+
         if (v->listaAdjacencias->quantidade % 2 != 0) {
-            return 0; // Se algum vértice tem grau ímpar, o grafo não é Euleriano
+            printf("[DEBUG] Vértice %d tem grau ímpar. Grafo NÃO é Euleriano.\n", *((int *)v->info));
+            return 0;
         }
+
         atual = atual->prox;
     }
 
-    return 1; // Todos os vértices têm grau par
+    printf("[DEBUG] Todos os vértices têm grau par. Grafo é Euleriano.\n");
+    return 1;
 }
 
-#endif // IS_EULERIAN_H
+#endif //EULERIANO_H

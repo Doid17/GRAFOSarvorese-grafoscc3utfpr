@@ -1,25 +1,22 @@
 #ifndef DESTRUIR_LISTA_INFO_H
 #define DESTRUIR_LISTA_INFO_H
 /* -------------------------------------*/
+#include "../Lista.h"
 
-void destruirListaInfo(pDLista pd, FuncaoLiberacao fl)
-{
 
-   pNoh atual, aux;
-   atual = pd->primeiro;
+void destruirListaInfo(pDLista lista, FuncaoLiberacao fl) {
+    if (lista == NULL) return;
 
-   while (atual != NULL)
-   {
-
-      aux = atual->prox;
-      fl(atual->info);
-      free(atual);
-      atual = aux;
-   }
-
-   pd->primeiro = NULL;
-   pd->ultimo = NULL;
-   pd->quantidade = 0;
+    pNoh atual = lista->primeiro;
+    while (atual != NULL) {
+        pNoh proximo = atual->prox;
+        if (fl != NULL) {
+            fl(atual->info); 
+        }
+        free(atual); 
+        atual = proximo;
+    }
+    free(lista); 
 }
 
 #endif

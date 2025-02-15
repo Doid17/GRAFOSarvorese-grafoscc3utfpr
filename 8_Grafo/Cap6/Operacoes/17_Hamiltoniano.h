@@ -20,21 +20,30 @@ int podeAdicionarAoCaminho(pVertice v, pDLista caminho, int pos, FuncaoComparaca
 /* Função recursiva para encontrar um caminho Hamiltoniano */
 int caminhoHamiltonianoRecursivo(pDGrafo grafo, pDLista caminho, int pos, FuncaoComparacao fc) {
     if (pos == grafo->listaVertices->quantidade) {
+        printf("Caminho Hamiltoniano encontrado!\n");
         return 1;
     }
 
     pNoh atual = grafo->listaVertices->primeiro;
     while (atual != NULL) {
         pVertice v = (pVertice) atual->info;
+        printf("Verificando vértice %p na posição %d\n", v, pos);
+
         if (podeAdicionarAoCaminho(v, caminho, pos, fc)) {
+         
             incluirInfo(caminho, v);
+
             if (caminhoHamiltonianoRecursivo(grafo, caminho, pos + 1, fc)) {
                 return 1;
             }
+
             excluirInfoPos(caminho, pos);
         }
+
         atual = atual->prox;
     }
+
+    printf("Nenhum caminho encontrado a partir da posição %d\n", pos);
     return 0;
 }
 
@@ -57,4 +66,4 @@ int ehHamiltoniano(pDGrafo grafo, FuncaoComparacao fc) {
     return resultado;
 }
 
-#endif // IS_HAMILTONIAN_H
+#endif //HAMILTONIANO_H

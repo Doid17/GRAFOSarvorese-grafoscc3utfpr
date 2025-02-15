@@ -1,6 +1,6 @@
 #ifndef DESTRUIR_LISTA_H
 #define DESTRUIR_LISTA_H
-
+#include "../Lista.h"
 void destruirListaRecursiva(pNoh atual){
     if (atual == NULL)
         return;

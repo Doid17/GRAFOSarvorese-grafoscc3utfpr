@@ -1,6 +1,6 @@
 #ifndef INCLUIR_INFO_H
 #define INCLUIR_INFO_H
-
+#include "../Lista.h"
 void incluirInfo(pDLista pd, void *info){
 
     if (pd == NULL){
