@@ -1,23 +1,23 @@
-
 #ifndef DESTRUIR_GRAFO_H
 #define DESTRUIR_GRAFO_H
 #include "../Grafo.h"
 void destruirGrafo(pDGrafo grafo) {
-    if (grafo == NULL) return;
-    
-    // Destroy all vertices and their adjacency lists
-    pNoh atual = grafo->vertices->primeiro;
-    while (atual != NULL) {
-        pVertice vertice = (pVertice)atual->info;
-        destruirLista(vertice->listaAdjacencias);
-        free(vertice->info);
-        free(vertice);
-        atual = atual->prox;
+    if (grafo) {
+        // Destroy vertices and their adjacency lists
+        pNoh atual = grafo->listaVertices->primeiro;
+        while (atual) {
+            pVertice v = (pVertice)atual->info;
+            if (v) {
+                destruirLista(v->listaAdjacencias);
+                free(v->info);
+                free(v);
+            }
+            atual = atual->prox;
+        }
+        // Destroy the vertices list itself
+        destruirLista(grafo->listaVertices);
+        free(grafo);
     }
-    
-    // Destroy the vertices list and the graph itself
-    destruirLista(grafo->vertices);
-    free(grafo);
 }
 
 #endif
