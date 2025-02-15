@@ -247,7 +247,7 @@ int main() {
           emparelhamentoGrafoBipartido(grafo, comparaVertice);
       printf("Numero maximo de emparelhamentos: %d\n", numEmparelhamentos);
 
-      // **Teste 2**: Remover uma aresta e verificar se o emparelhamento diminui
+      //Teste 2: Remover uma aresta e verificar se o emparelhamento diminui
       excluirAresta(grafo, &vertices_emparelhamento[0], &vertices_emparelhamento[3], comparaVertice);
       printf("\nApós remover a aresta 1 ↔ 4:\n");
       mostrarGrafo(grafo, imprimeVertice);
