@@ -157,10 +157,11 @@ int main() {
 
     incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[1], comparaVertice);
     incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[2], comparaVertice);
-    incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[3], comparaVertice);
+    incluirAresta(grafo, &vertices_perfeitos[3], &vertices_perfeitos[3], comparaVertice);
     incluirAresta(grafo, &vertices_perfeitos[3], &vertices_perfeitos[4], comparaVertice);
     incluirAresta(grafo, &vertices_perfeitos[4], &vertices_perfeitos[5], comparaVertice);
     incluirAresta(grafo, &vertices_perfeitos[5], &vertices_perfeitos[0], comparaVertice);
+   
 
     printf("Grafo criado com sucesso! Estrutura:\n");
     mostrarGrafo(grafo, imprimeVertice);
@@ -178,6 +179,7 @@ int main() {
 
     case 12:
       colorirGrafo(grafo, comparaVertice);
+      mostrarGrafoColorido(grafo);
       getchar();
       break;
 
