@@ -13,6 +13,8 @@
 #include "Operacoes/2_incluirVertice.h"
 #include "Operacoes/3_incluirAresta.h"
 #include "Operacoes/4_mostrarGrafo.h"
+#include "Operacoes/5_excluirVertice.h"
+#include "Operacoes/6_excluirAresta.h"
 #include "Operacoes/7_buscaProfundidade.h"
 #include "Operacoes/9_existeCaminho.h"
 #include "Operacoes/10_getCaminho.h"
