@@ -17,19 +17,17 @@
 #include "Operacoes/9_existeCaminho.h"
 #include "Operacoes/10_getCaminho.h"
 #include "Operacoes/11_buscarVerticesIncidentes.h"
-#include "Operacoes/14_buscarVertice.h"
+#include "Operacoes/11.1_buscarVertice.h"
 
 #include "Operacoes/12_colorirGrafo.h"
 #include "Operacoes/13_mostrarGrafoColorido.h"
-#include "Operacoes/13_mostrarGrafoColorido.h"
-//#include "Operacoes/15_numero_cromatico.h"
 
-#include "Operacoes/16_grafoConexo.h"
-#include "Operacoes/17_grafoBipartido.h"
-#include "Operacoes/18_EmparelhamentoGrafoBipartido.h"
+#include "Operacoes/14_grafoConexo.h"
+#include "Operacoes/15_grafoBipartido.h"
+#include "Operacoes/16_EmparelhamentoGrafoBipartido.h"
 
-#include "Operacoes/20_Hamiltoniano.h"
-#include "Operacoes/21_Euleriano.h"
+#include "Operacoes/17_Hamiltoniano.h"
+#include "Operacoes/18_Euleriano.h"
 
 
 #include <math.h>
@@ -37,5 +35,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
+#include <time.h>
+#include <fcntl.h>
+#include <stddef.h>
+#include <signal.h>
+#include <errno.h>
+#ifdef _WIN32
+#include <conio.h>
+#else
+#define getch() getchar()
+#endif
+// system("chcp 65001 > nul");
+
+
+
 
 #endif
