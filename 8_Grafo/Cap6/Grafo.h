@@ -28,6 +28,7 @@
 
 #include "Operacoes/17_Hamiltoniano.h"
 #include "Operacoes/18_Euleriano.h"
+#include "Operacoes/19_destruirGrafo.h"
 
 
 #include <math.h>
