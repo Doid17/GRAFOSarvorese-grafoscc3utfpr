@@ -5,7 +5,7 @@
 
 void colorirGrafo(pDGrafo grafo, FuncaoComparacao fc) {
     if (!grafo || !grafo->listaVertices || grafo->listaVertices->quantidade == 0) return;
-printf(" ");
+
     int V = grafo->listaVertices->quantidade;
     int cores[V];
     for (int i = 0; i < V; i++) cores[i] = -1;
@@ -16,26 +16,23 @@ printf(" ");
      printf("Vértice  -> Cor \n");
     pNoh noh = grafo->listaVertices->primeiro;
     for (int u = 1; noh != NULL; noh = noh->prox, u++) {
-             printf(" ");
         pVertice v = (pVertice)noh->info;
         pNoh adj = v->listaAdjacencias->primeiro;
         while (adj) {
-            printf(" ");
             pVertice adjV = (pVertice)adj->info;
             if (cores[*((int *)adjV->info)] != -1)
                 disponiveis[cores[*((int *)adjV->info)]] = 0;
             adj = adj->prox;
         }
-        printf(" ");
+
         int cr;
         for (cr = 0; cr < V; cr++) {
             if (disponiveis[cr]) break;
         }
         cores[*((int *)v->info)] = cr;
-        printf(" ");
+
         adj = v->listaAdjacencias->primeiro;
         while (adj) {
-                printf(" ");
             pVertice adjV = (pVertice)adj->info;
             if (cores[*((int *)adjV->info)] != -1)
                 disponiveis[cores[*((int *)adjV->info)]] = 1;
